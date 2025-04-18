@@ -9,9 +9,11 @@ const GlobalStyles = createGlobalStyle`
     --primary-main: #4F45E4;
     --secondary-main: #006699;
 
-    --purple-800: #6A63EB;
+    --purple-900: #16009B;
+    --purple-500: #6A63EB;
 
     --gray-primary: #cccccc;
+    --gray-800: #9aa2ae;
     --gray-600: #d9d9dd;
 
     --red-primary: #FF4D4E;

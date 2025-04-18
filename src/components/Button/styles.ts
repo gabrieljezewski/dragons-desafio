@@ -16,7 +16,7 @@ export const Button = styled.button<StyledButtonProps>`
   transition: background-color 0.3s ease;
 
   &:hover:enabled {
-    background-color: var(--purple-800);
+    background-color: var(--purple-500);
   }
 
   &:disabled {
