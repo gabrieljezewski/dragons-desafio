@@ -27,7 +27,7 @@ export const InputField = styled.input<StyledInputProps>`
   transition: border-color 0.3s ease;
 
   &::placeholder {
-    color: var(--gray-800);
+    color: var(--gray-700);
   }
 
   &:focus {

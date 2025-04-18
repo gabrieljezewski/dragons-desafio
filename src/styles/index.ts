@@ -11,10 +11,15 @@ const GlobalStyles = createGlobalStyle`
 
     --purple-900: #16009B;
     --purple-500: #6A63EB;
+    --purple-100: #dfe7ff;
 
     --gray-primary: #cccccc;
-    --gray-800: #9aa2ae;
+    --gray-900: #727886;
+    --gray-800: #67707F;
+    --gray-700: #9aa2ae;
     --gray-600: #d9d9dd;
+    --gray-200: #e7e9ed;
+    --gray-100: #f9fafb;
 
     --red-primary: #FF4D4E;
   }
