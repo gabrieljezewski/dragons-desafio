@@ -12,3 +12,13 @@ export const getDragons = async (search = ""): Promise<Dragon[]> => {
     throw error;
   }
 };
+
+export const getDragonById = async (id: string): Promise<Dragon> => {
+  try {
+    const response = await api.get(`/dragon/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Erro ao buscar o dragão com ID ${id}:`, error);
+    throw error;
+  }
+};

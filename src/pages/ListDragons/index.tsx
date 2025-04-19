@@ -1,16 +1,31 @@
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Text from "../../components/Text";
+import Loading from "../../components/Loading";
 
 import { useListDragonsController } from "./ListDragons.controller";
 import { formatDate } from "../../utils/formatDate";
 
+import { TrashIcon } from "../../assets/icons/trashIcon";
+
+import { DragonDetailsModal } from "./components/DragonDetailsModal";
+
 import * as S from "./ListDragons.styles";
-import Loading from "../../components/Loading";
 
 export default function ListDragons() {
-  const { dragons, loading, setSearch, search, notFound } =
-    useListDragonsController();
+  const {
+    dragons,
+    loading,
+    setSearch,
+    search,
+    notFound,
+    isModalOpen,
+    handleOpenModal,
+    handleCloseModal,
+    handleDragonById,
+    selectedDragon,
+    truncateText,
+  } = useListDragonsController();
 
   return (
     <S.ContainerScreen>
@@ -23,7 +38,7 @@ export default function ListDragons() {
       <S.ContainerList>
         <S.ContainerInput>
           <Input
-            placeholder="Buscar dragões pelo nome"
+            placeholder="Buscar dragões pelo nome ou tipo"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -60,11 +75,14 @@ export default function ListDragons() {
               </S.EmptyMessage>
             </S.TableBody>
           ) : (
-            <S.TableBody>
+            <S.TableBody onClick={handleOpenModal}>
               {dragons.map((dragon) => (
-                <S.TableRow key={dragon.id}>
+                <S.TableRow
+                  key={dragon.id}
+                  onClick={() => handleDragonById(dragon.id)}
+                >
                   <Text fontSize="16px" fontWeight="bold">
-                    {dragon.name}
+                    {truncateText(dragon.name, 20)}
                   </Text>
                   <S.Tag>
                     <Text
@@ -72,18 +90,25 @@ export default function ListDragons() {
                       fontWeight="bold"
                       color="var(--purple-900)"
                     >
-                      {dragon.type}
+                      {truncateText(dragon?.type, 15)}
                     </Text>
                   </S.Tag>
                   <Text fontSize="14px" color="var(--gray-800)">
-                    {formatDate(dragon.createdAt)}
+                    {formatDate(dragon?.createdAt)}
                   </Text>
+                  <TrashIcon />
                 </S.TableRow>
               ))}
             </S.TableBody>
           )}
         </S.Table>
       </S.ContainerList>
+
+      <DragonDetailsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        selectedDragon={selectedDragon}
+      />
     </S.ContainerScreen>
   );
 }

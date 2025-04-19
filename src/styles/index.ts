@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
     --background: #EAF3FF;
 
     --primary-main: #4F45E4;
-    --secondary-main: #006699;
 
     --purple-900: #16009B;
     --purple-500: #6A63EB;
@@ -20,6 +19,8 @@ const GlobalStyles = createGlobalStyle`
     --gray-600: #d9d9dd;
     --gray-200: #e7e9ed;
     --gray-100: #f9fafb;
+
+    --dark-gray: #444444;
 
     --green-primary: #52C41A;
 
