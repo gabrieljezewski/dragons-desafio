@@ -22,3 +22,13 @@ export const getDragonById = async (id: string): Promise<Dragon> => {
     throw error;
   }
 };
+
+export const deleteDragon = async (id: string): Promise<void> => {
+  try {
+    await api.delete(`/dragon/${id}`);
+    console.log(`Dragão com ID ${id} deletado com sucesso.`);
+  } catch (error) {
+    console.error(`Erro ao deletar o dragão com ID ${id}:`, error);
+    throw error;
+  }
+};

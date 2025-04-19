@@ -6,10 +6,14 @@ export interface IUseListDragonsControllerProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   search: string;
   notFound: boolean;
-  isModalOpen: boolean;
-  handleOpenModal: () => void;
+  activeModal: ModalType;
+  setSelectedDragonId: React.Dispatch<React.SetStateAction<string | null>>;
+  handleOpenModal: (type: ModalType) => void;
   handleCloseModal: () => void;
   handleDragonById: (id: string) => Promise<void>;
+  handleDeleteDragon: () => Promise<void>;
   selectedDragon: Dragon | null;
   truncateText: (text: string, maxLength: number) => string;
 }
+
+export type ModalType = "details" | "delete" | null;

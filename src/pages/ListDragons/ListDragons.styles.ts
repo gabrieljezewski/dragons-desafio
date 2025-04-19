@@ -47,8 +47,8 @@ export const TableHeader = styled.div`
 `;
 
 export const TableBody = styled.div`
-  max-height: 440px;
-  min-height: 440px;
+  max-height: 450px;
+  min-height: 450px;
   overflow-y: auto;
 
   scroll-behavior: smooth;
@@ -88,3 +88,5 @@ export const Tag = styled.div`
   border-radius: 50px;
   background-color: var(--purple-100);
 `;
+
+export const IconDelete = styled.div``;

@@ -9,6 +9,7 @@ import { formatDate } from "../../utils/formatDate";
 import { TrashIcon } from "../../assets/icons/trashIcon";
 
 import { DragonDetailsModal } from "./components/DragonDetailsModal";
+import { DeleteDragonModal } from "./components/DeleteDragonModal";
 
 import * as S from "./ListDragons.styles";
 
@@ -19,10 +20,12 @@ export default function ListDragons() {
     setSearch,
     search,
     notFound,
-    isModalOpen,
+    activeModal,
+    setSelectedDragonId,
     handleOpenModal,
     handleCloseModal,
     handleDragonById,
+    handleDeleteDragon,
     selectedDragon,
     truncateText,
   } = useListDragonsController();
@@ -75,7 +78,7 @@ export default function ListDragons() {
               </S.EmptyMessage>
             </S.TableBody>
           ) : (
-            <S.TableBody onClick={handleOpenModal}>
+            <S.TableBody onClick={() => handleOpenModal("details")}>
               {dragons.map((dragon) => (
                 <S.TableRow
                   key={dragon.id}
@@ -96,7 +99,15 @@ export default function ListDragons() {
                   <Text fontSize="14px" color="var(--gray-800)">
                     {formatDate(dragon?.createdAt)}
                   </Text>
-                  <TrashIcon />
+                  <S.IconDelete
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedDragonId(dragon.id);
+                      handleOpenModal("delete");
+                    }}
+                  >
+                    <TrashIcon />
+                  </S.IconDelete>
                 </S.TableRow>
               ))}
             </S.TableBody>
@@ -105,9 +116,15 @@ export default function ListDragons() {
       </S.ContainerList>
 
       <DragonDetailsModal
-        isOpen={isModalOpen}
+        isOpen={activeModal === "details"}
         onClose={handleCloseModal}
         selectedDragon={selectedDragon}
+      />
+
+      <DeleteDragonModal
+        isOpen={activeModal === "delete"}
+        onClose={handleCloseModal}
+        onDelete={handleDeleteDragon}
       />
     </S.ContainerScreen>
   );
