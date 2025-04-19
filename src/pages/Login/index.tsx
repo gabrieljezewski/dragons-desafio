@@ -7,7 +7,7 @@ import { useLoginController } from "./Login.controller";
 import * as S from "./Login.styles";
 
 export default function Login() {
-  const { email, setEmail, password, setPassword, handleLogin } =
+  const { email, setEmail, password, setPassword, isLoading, handleLogin } =
     useLoginController();
 
   return (
@@ -32,7 +32,12 @@ export default function Login() {
           />
         </S.ContainerInput>
         <S.Button>
-          <Button text="Acessar" width="200px" onClick={handleLogin} />
+          <Button
+            text={"Acessar"}
+            width="200px"
+            loading={isLoading}
+            onClick={handleLogin}
+          />
         </S.Button>
       </S.ContainerLogin>
     </S.ContainerScreen>

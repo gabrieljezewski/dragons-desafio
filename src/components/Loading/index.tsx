@@ -1,8 +1,12 @@
 import * as S from "./styles";
 
-const Loading = () => (
-  <S.LoadingContainer>
-    <S.Spinner />
+type LoadingProps = {
+  variant?: "default" | "secondary";
+};
+
+const Loading = ({ variant = "default" }: LoadingProps) => (
+  <S.LoadingContainer variant={variant}>
+    <S.Spinner variant={variant} />
   </S.LoadingContainer>
 );
 

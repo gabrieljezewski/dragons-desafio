@@ -32,7 +32,12 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
       setLoading(true);
       setNotFound(false);
       const data = await getDragons(searchTerm);
-      setDragons(data);
+
+      const sortedData = data.sort((a, b) =>
+        a.name.localeCompare(b.name, "pt", { sensitivity: "base" })
+      );
+
+      setDragons(sortedData);
     } catch (error: any) {
       if (error.response?.status === 404) {
         setDragons([]);

@@ -1,14 +1,17 @@
 import React from "react";
 
+import Loading from "../Loading";
+
 import * as S from "./styles";
 
 type ButtonProps = {
   variant?: "primary" | "secondary";
-  text: string;
+  text: string | React.ReactNode;
   width?: string;
   height?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
+  loading?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -18,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   height,
   onClick,
   disabled = false,
+  loading = false,
 }) => {
   return (
     <S.Button
@@ -27,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {text}
+      {loading ? <Loading variant="secondary" /> : text}
     </S.Button>
   );
 };

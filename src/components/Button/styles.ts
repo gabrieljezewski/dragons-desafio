@@ -7,6 +7,9 @@ interface StyledButtonProps {
 }
 
 export const Button = styled.button<StyledButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "42px"};
   border: 1px solid transparent;

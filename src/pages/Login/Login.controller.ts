@@ -14,17 +14,25 @@ export const useLoginController = (): IUseLoginControllerProps => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    const success = login(email, password);
-    if (success) {
-      showToast("Login realizado com sucesso!", "success");
-      setTimeout(() => {
-        navigate("/listar-dragoes");
-      }, 1000);
-    } else {
-      showToast("E-mail ou senha inválidos!", "error");
-    }
+    setIsLoading(true);
+
+    setTimeout(() => {
+      const success = login(email, password);
+
+      setIsLoading(false);
+
+      if (success) {
+        showToast("Login realizado com sucesso!", "success");
+        setTimeout(() => {
+          navigate("/listar-dragoes");
+        }, 1000);
+      } else {
+        showToast("E-mail ou senha inválidos!", "error");
+      }
+    }, 1000);
   };
 
   return {
@@ -32,6 +40,7 @@ export const useLoginController = (): IUseLoginControllerProps => {
     setEmail,
     password,
     setPassword,
+    isLoading,
     handleLogin,
   };
 };
