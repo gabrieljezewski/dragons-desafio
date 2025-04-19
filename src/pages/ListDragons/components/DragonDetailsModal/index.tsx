@@ -64,7 +64,7 @@ export const DragonDetailsModal = ({
             )}
           </S.Histories>
           <S.ContainerButton>
-            <Button text="Voltar" width="30%" onClick={onClose} />
+            <Button text="Voltar" width="140px" onClick={onClose} />
           </S.ContainerButton>
         </S.ContentDragon>
       ) : (

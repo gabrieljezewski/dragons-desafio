@@ -1,24 +1,14 @@
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Text from "../../components/Text";
-import Toast from "../../components/Toast";
 
 import { useLoginController } from "./Login.controller";
 
 import * as S from "./Login.styles";
 
 export default function Login() {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    toastType,
-    toastMessage,
-    showToast,
-    setShowToast,
-    handleLogin,
-  } = useLoginController();
+  const { email, setEmail, password, setPassword, handleLogin } =
+    useLoginController();
 
   return (
     <S.ContainerScreen>
@@ -45,14 +35,6 @@ export default function Login() {
           <Button text="Acessar" width="200px" onClick={handleLogin} />
         </S.Button>
       </S.ContainerLogin>
-
-      {showToast && (
-        <Toast
-          message={toastMessage}
-          type={toastType}
-          onClose={() => setShowToast(false)}
-        />
-      )}
     </S.ContainerScreen>
   );
 }

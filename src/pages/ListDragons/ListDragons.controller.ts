@@ -27,11 +27,6 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
     setActiveModal(null);
   };
 
-  const truncateText = (text: string, maxLength: number) => {
-    if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "...";
-  };
-
   const fetchDragons = async (searchTerm = "") => {
     try {
       setLoading(true);
@@ -97,6 +92,5 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
     handleDragonById,
     handleDeleteDragon,
     selectedDragon,
-    truncateText,
   };
 };

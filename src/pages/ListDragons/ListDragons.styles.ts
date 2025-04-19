@@ -13,7 +13,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800px;
+  width: 1000px;
   margin-bottom: 30px;
 `;
 
@@ -23,14 +23,14 @@ export const ContainerList = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: var(--white);
-  width: 800px;
+  width: 1000px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0px #0001;
   background-color: var(--white);
 `;
 
 export const ContainerInput = styled.div`
-  width: 800px;
+  width: 1000px;
   padding: 20px;
 `;
 
@@ -40,8 +40,8 @@ export const Table = styled.div`
 
 export const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
-  padding: 14px 0 14px 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 16px 16px 16px 20px;
   border: 1px solid var(--gray-200);
   background-color: var(--gray-100);
 `;
@@ -68,8 +68,8 @@ export const EmptyMessage = styled.div`
 
 export const TableRow = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
-  padding: 16px 0 16px 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 16px 16px 16px 20px;
   border-bottom: 1px solid var(--gray-200);
   align-items: center;
   cursor: pointer;
@@ -89,4 +89,8 @@ export const Tag = styled.div`
   background-color: var(--purple-100);
 `;
 
-export const IconDelete = styled.div``;
+export const ContainerActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;

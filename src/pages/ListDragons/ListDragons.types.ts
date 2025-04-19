@@ -13,7 +13,6 @@ export interface IUseListDragonsControllerProps {
   handleDragonById: (id: string) => Promise<void>;
   handleDeleteDragon: () => Promise<void>;
   selectedDragon: Dragon | null;
-  truncateText: (text: string, maxLength: number) => string;
 }
 
 export type ModalType = "details" | "delete" | null;

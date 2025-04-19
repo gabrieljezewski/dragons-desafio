@@ -25,6 +25,8 @@ const GlobalStyles = createGlobalStyle`
     --green-primary: #52C41A;
 
     --red-primary: #FF4D4E;
+
+    --orange-primary: #FFA500;
   }
 
   * {

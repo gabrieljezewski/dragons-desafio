@@ -3,13 +3,13 @@ import Input from "../../components/Input";
 import Text from "../../components/Text";
 import Loading from "../../components/Loading";
 
-import { useListDragonsController } from "./ListDragons.controller";
 import { formatDate } from "../../utils/formatDate";
-
-import { TrashIcon } from "../../assets/icons/trashIcon";
+import { truncateText } from "../../utils/truncateText";
 
 import { DragonDetailsModal } from "./components/DragonDetailsModal";
 import { DeleteDragonModal } from "./components/DeleteDragonModal";
+
+import { useListDragonsController } from "./ListDragons.controller";
 
 import * as S from "./ListDragons.styles";
 
@@ -27,7 +27,6 @@ export default function ListDragons() {
     handleDragonById,
     handleDeleteDragon,
     selectedDragon,
-    truncateText,
   } = useListDragonsController();
 
   return (
@@ -99,15 +98,27 @@ export default function ListDragons() {
                   <Text fontSize="14px" color="var(--gray-800)">
                     {formatDate(dragon?.createdAt)}
                   </Text>
-                  <S.IconDelete
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedDragonId(dragon.id);
-                      handleOpenModal("delete");
-                    }}
-                  >
-                    <TrashIcon />
-                  </S.IconDelete>
+                  <S.ContainerActions>
+                    <Button
+                      variant="secondary"
+                      text="Alterar"
+                      width="90px"
+                      height="36px"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    />
+                    <Button
+                      text="Deletar"
+                      width="90px"
+                      height="36px"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedDragonId(dragon.id);
+                        handleOpenModal("delete");
+                      }}
+                    />
+                  </S.ContainerActions>
                 </S.TableRow>
               ))}
             </S.TableBody>

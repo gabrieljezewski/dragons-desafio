@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 interface StyledButtonProps {
-  width?: string;
   variant: "primary" | "secondary";
+  width?: string;
+  height?: string;
 }
 
 export const Button = styled.button<StyledButtonProps>`
   width: ${(props) => props.width || "100%"};
-  height: 42px;
+  height: ${(props) => props.height || "42px"};
   border: 1px solid transparent;
   border-radius: 8px;
   font-size: 16px;
