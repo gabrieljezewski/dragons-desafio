@@ -5,3 +5,9 @@ export interface Dragon {
   createdAt: string;
   histories: string[];
 }
+
+export interface PostDragon {
+  name: string;
+  type: string;
+  histories?: string[];
+}

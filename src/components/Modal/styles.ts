@@ -45,7 +45,7 @@ export const Divider = styled.div`
 `;
 
 export const Content = styled.div`
-  max-height: 60vh;
+  max-height: 70vh;
   overflow-y: auto;
 
   &::-webkit-scrollbar {

@@ -4,26 +4,24 @@ import Text from "../Text";
 
 import * as S from "./styles";
 
-type InputProps = {
+type TextareaProps = {
   label?: string;
   placeholder?: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   disabled?: boolean;
   error?: boolean;
   errorMessage?: string;
   width?: string;
 };
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       label,
       placeholder,
       value,
       onChange,
-      type = "text",
       disabled = false,
       error = false,
       errorMessage,
@@ -41,9 +39,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </Text>
           </S.ContainerLabel>
         )}
-        <S.InputField
+        <S.TextAreaField
           ref={ref}
-          type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
@@ -63,4 +60,4 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-export default Input;
+export default Textarea;

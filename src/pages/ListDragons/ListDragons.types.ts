@@ -1,5 +1,7 @@
 import { Dragon } from "../../services/dragon/dragon.types";
 
+export type ModalType = "details" | "add" | "edit" | "delete" | null;
+
 export interface IUseListDragonsControllerProps {
   dragons: Dragon[];
   loading: boolean;
@@ -7,12 +9,12 @@ export interface IUseListDragonsControllerProps {
   search: string;
   notFound: boolean;
   activeModal: ModalType;
-  setSelectedDragonId: React.Dispatch<React.SetStateAction<string | null>>;
   handleOpenModal: (type: ModalType) => void;
   handleCloseModal: () => void;
   handleDragonById: (id: string) => Promise<void>;
   handleDeleteDragon: () => Promise<void>;
   selectedDragon: Dragon | null;
+  fetchDragons: (searchTerm?: string) => Promise<void>;
+  handleEditButton: (e: React.MouseEvent, id: string) => void;
+  handleDeleteButton: (e: React.MouseEvent, id: string) => void;
 }
-
-export type ModalType = "details" | "delete" | null;

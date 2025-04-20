@@ -7,7 +7,7 @@ import { useToast } from "../../contexts/ToastContext";
 
 import { IUseListDragonsControllerProps } from "./ListDragons.types";
 
-type ModalType = "details" | "delete" | null;
+type ModalType = "details" | "add" | "edit" | "delete" | null;
 
 export const useListDragonsController = (): IUseListDragonsControllerProps => {
   const { showToast } = useToast();
@@ -76,6 +76,19 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
     }
   };
 
+  const handleEditButton = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    setSelectedDragonId(id);
+    handleDragonById(id);
+    handleOpenModal("edit");
+  };
+
+  const handleDeleteButton = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    setSelectedDragonId(id);
+    handleOpenModal("delete");
+  };
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       fetchDragons(search);
@@ -91,11 +104,13 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
     search,
     notFound,
     activeModal,
-    setSelectedDragonId,
     handleOpenModal,
     handleCloseModal,
     handleDragonById,
     handleDeleteDragon,
     selectedDragon,
+    fetchDragons,
+    handleEditButton,
+    handleDeleteButton,
   };
 };

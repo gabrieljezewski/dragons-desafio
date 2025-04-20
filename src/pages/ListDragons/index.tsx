@@ -8,6 +8,7 @@ import { truncateText } from "../../utils/truncateText";
 
 import { DragonDetailsModal } from "./components/DragonDetailsModal";
 import { DeleteDragonModal } from "./components/DeleteDragonModal";
+import { DragonFormModal } from "./components/DragonFormModal";
 
 import { useListDragonsController } from "./ListDragons.controller";
 
@@ -21,12 +22,14 @@ export default function ListDragons() {
     search,
     notFound,
     activeModal,
-    setSelectedDragonId,
     handleOpenModal,
     handleCloseModal,
     handleDragonById,
     handleDeleteDragon,
     selectedDragon,
+    fetchDragons,
+    handleEditButton,
+    handleDeleteButton,
   } = useListDragonsController();
 
   return (
@@ -35,7 +38,11 @@ export default function ListDragons() {
         <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
           Lista de Dragões
         </Text>
-        <Button text="Novo Dragão" width="190px" />
+        <Button
+          text="Novo Dragão"
+          width="190px"
+          onClick={() => handleOpenModal("add")}
+        />
       </S.Header>
       <S.ContainerList>
         <S.ContainerInput>
@@ -104,19 +111,13 @@ export default function ListDragons() {
                       text="Alterar"
                       width="90px"
                       height="36px"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
+                      onClick={(e) => handleEditButton(e, dragon.id)}
                     />
                     <Button
                       text="Deletar"
                       width="90px"
                       height="36px"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedDragonId(dragon.id);
-                        handleOpenModal("delete");
-                      }}
+                      onClick={(e) => handleDeleteButton(e, dragon.id)}
                     />
                   </S.ContainerActions>
                 </S.TableRow>
@@ -130,6 +131,14 @@ export default function ListDragons() {
         isOpen={activeModal === "details"}
         onClose={handleCloseModal}
         selectedDragon={selectedDragon}
+      />
+
+      <DragonFormModal
+        isOpen={activeModal === "add" || activeModal === "edit"}
+        onClose={handleCloseModal}
+        onRefreshList={fetchDragons}
+        mode={activeModal === "add" ? "add" : "edit"}
+        dragonToEdit={activeModal === "edit" ? selectedDragon : null}
       />
 
       <DeleteDragonModal
