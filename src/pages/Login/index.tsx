@@ -7,7 +7,7 @@ import { useLoginController } from "./Login.controller";
 import * as S from "./Login.styles";
 
 export default function Login() {
-  const { email, setEmail, password, setPassword, isLoading, handleLogin } =
+  const { register, handleSubmit, onSubmit, errors, isLoading } =
     useLoginController();
 
   return (
@@ -16,29 +16,28 @@ export default function Login() {
         <S.Box>
           <Text>Para acessar digite suas credenciais</Text>
         </S.Box>
-        <S.ContainerInput>
-          <Input
-            placeholder="E-mail"
-            width="250px"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            placeholder="Senha"
-            width="250px"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </S.ContainerInput>
-        <S.Button>
-          <Button
-            text={"Acessar"}
-            width="200px"
-            loading={isLoading}
-            onClick={handleLogin}
-          />
-        </S.Button>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <S.ContainerInput>
+            <Input
+              placeholder="E-mail"
+              width="250px"
+              {...register("email")}
+              error={!!errors.email}
+              errorMessage={errors.email?.message}
+            />
+            <Input
+              placeholder="Senha"
+              width="250px"
+              type="password"
+              {...register("password")}
+              error={!!errors.password}
+              errorMessage={errors.password?.message}
+            />
+          </S.ContainerInput>
+          <S.Button>
+            <Button text="Acessar" width="200px" loading={isLoading} />
+          </S.Button>
+        </form>
       </S.ContainerLogin>
     </S.ContainerScreen>
   );

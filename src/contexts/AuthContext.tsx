@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [isAuthenticated]);
 
   const login = (email: string, password: string) => {
-    const validEmail = "admin";
+    const validEmail = "admin@email.com";
     const validPassword = "123456";
 
     if (email === validEmail && password === validPassword) {

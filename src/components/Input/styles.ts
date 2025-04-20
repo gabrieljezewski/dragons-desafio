@@ -11,12 +11,6 @@ export const Container = styled.div<StyledInputProps>`
   width: ${(props) => props.width || "100%"};
 `;
 
-export const Label = styled.label`
-  font-size: 14px;
-  margin-bottom: 4px;
-  color: var(--black);
-`;
-
 export const InputField = styled.input<StyledInputProps>`
   height: 46px;
   padding: 0 12px;
@@ -51,8 +45,6 @@ export const InputField = styled.input<StyledInputProps>`
   }
 `;
 
-export const ErrorText = styled.span`
-  font-size: 12px;
-  color: var(--red-500);
+export const ContainerError = styled.div`
   margin-top: 4px;
 `;

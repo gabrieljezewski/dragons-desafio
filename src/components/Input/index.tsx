@@ -1,4 +1,6 @@
-import React from "react";
+import React, { forwardRef } from "react";
+
+import Text from "../Text";
 
 import * as S from "./styles";
 
@@ -14,31 +16,49 @@ type InputProps = {
   width?: string;
 };
 
-const Input: React.FC<InputProps> = ({
-  label,
-  placeholder,
-  value,
-  onChange,
-  type = "text",
-  disabled = false,
-  error = false,
-  errorMessage,
-  width,
-}) => {
-  return (
-    <S.Container width={width}>
-      {label && <S.Label>{label}</S.Label>}
-      <S.InputField
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        error={error}
-      />
-      {error && errorMessage && <S.ErrorText>{errorMessage}</S.ErrorText>}
-    </S.Container>
-  );
-};
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      label,
+      placeholder,
+      value,
+      onChange,
+      type = "text",
+      disabled = false,
+      error = false,
+      errorMessage,
+      width,
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <S.Container width={width}>
+        {label && (
+          <Text fontSize="16px" fontWeight="bold">
+            {label}
+          </Text>
+        )}
+        <S.InputField
+          ref={ref}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          error={error}
+          {...rest}
+        />
+        {error && errorMessage && (
+          <S.ContainerError>
+            <Text fontSize="14px" color="var(--red-primary)" fontWeight="bold">
+              {errorMessage}
+            </Text>
+          </S.ContainerError>
+        )}
+      </S.Container>
+    );
+  }
+);
 
 export default Input;

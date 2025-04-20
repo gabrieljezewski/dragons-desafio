@@ -1,8 +1,18 @@
-export interface IUseLoginControllerProps {
+import {
+  FieldErrors,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
+
+export interface ILoginFormData {
   email: string;
-  setEmail: (value: string) => void;
   password: string;
-  setPassword: (value: string) => void;
+}
+
+export interface IUseLoginControllerProps {
+  register: UseFormRegister<ILoginFormData>;
+  handleSubmit: UseFormHandleSubmit<ILoginFormData>;
+  onSubmit: (data: ILoginFormData) => void;
+  errors: FieldErrors<ILoginFormData>;
   isLoading: boolean;
-  handleLogin: () => void;
 }
