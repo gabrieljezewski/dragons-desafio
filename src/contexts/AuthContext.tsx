@@ -6,8 +6,14 @@ import {
   ReactNode,
 } from "react";
 
+interface User {
+  name: string;
+  email: string;
+}
+
 interface AuthContextType {
   isAuthenticated: boolean;
+  user: User | null;
   login: (email: string, password: string) => boolean;
   logout: () => void;
 }
@@ -16,13 +22,25 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    const storedAuth = localStorage.getItem("isAuthenticated");
-    return storedAuth === "true";
+    return localStorage.getItem("isAuthenticated") === "true";
+  });
+
+  const [user, setUser] = useState<User | null>(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
   });
 
   useEffect(() => {
     localStorage.setItem("isAuthenticated", String(isAuthenticated));
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
 
   const login = (email: string, password: string) => {
     const validEmail = "admin@email.com";
@@ -30,6 +48,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     if (email === validEmail && password === validPassword) {
       setIsAuthenticated(true);
+      setUser({
+        name: "Admin",
+        email: validEmail,
+      });
       return true;
     }
 
@@ -38,10 +60,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     setIsAuthenticated(false);
+    setUser(null);
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("user");
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

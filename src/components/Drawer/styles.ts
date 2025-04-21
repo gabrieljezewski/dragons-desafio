@@ -8,43 +8,25 @@ export const Overlay = styled.div<DrawerProps>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
-  transition: opacity 0.3s ease;
-  z-index: 999;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: ${(props) => (props.isOpen ? "block" : "none")};
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-`;
-
-export const DrawerContainer = styled.div<DrawerProps>`
+export const Drawer = styled.div<DrawerProps>`
   position: fixed;
   top: 0;
-  right: 0;
-  width: 500px;
+  left: 0;
   height: 100%;
-  background-color: var(--white);
-  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
-  transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
-  transition: transform 0.3s ease;
-  z-index: 1000;
-  padding: 24px;
-  box-sizing: border-box;
-`;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 24px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+  width: 250px;
+  background-color: white;
+  z-index: 1050;
+  transform: ${(props) =>
+    props.isOpen ? "translateX(0)" : "translateX(-100%)"};
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 `;

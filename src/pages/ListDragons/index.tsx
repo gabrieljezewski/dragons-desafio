@@ -6,11 +6,14 @@ import Loading from "../../components/Loading";
 import { formatDate } from "../../utils/formatDate";
 import { truncateText } from "../../utils/truncateText";
 
+import { MenuDrawer } from "./components/MenuDrawer";
 import { DragonDetailsModal } from "./components/DragonDetailsModal";
 import { DeleteDragonModal } from "./components/DeleteDragonModal";
 import { DragonFormModal } from "./components/DragonFormModal";
 
 import { useListDragonsController } from "./ListDragons.controller";
+
+import { MenuIcon } from "../../assets/icons/menuIcon";
 
 import * as S from "./ListDragons.styles";
 
@@ -30,10 +33,15 @@ export default function ListDragons() {
     fetchDragons,
     handleEditButton,
     handleDeleteButton,
+    isDrawerOpen,
+    toggleDrawer,
   } = useListDragonsController();
 
   return (
     <S.ContainerScreen>
+      <S.IconWrapper onClick={toggleDrawer}>
+        <MenuIcon />
+      </S.IconWrapper>
       <S.Header>
         <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
           Lista de Dragões
@@ -126,6 +134,8 @@ export default function ListDragons() {
           )}
         </S.Table>
       </S.ContainerList>
+
+      <MenuDrawer isOpen={isDrawerOpen} onClose={toggleDrawer} />
 
       <DragonDetailsModal
         isOpen={activeModal === "details"}

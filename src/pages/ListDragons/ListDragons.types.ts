@@ -17,4 +17,6 @@ export interface IUseListDragonsControllerProps {
   fetchDragons: (searchTerm?: string) => Promise<void>;
   handleEditButton: (e: React.MouseEvent, id: string) => void;
   handleDeleteButton: (e: React.MouseEvent, id: string) => void;
+  isDrawerOpen: boolean;
+  toggleDrawer: () => void;
 }

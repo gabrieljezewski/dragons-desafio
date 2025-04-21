@@ -18,6 +18,11 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [selectedDragonId, setSelectedDragonId] = useState<string | null>(null);
   const [selectedDragon, setSelectedDragon] = useState<Dragon | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
   const handleOpenModal = (type: ModalType) => {
     setActiveModal(type);
@@ -112,5 +117,7 @@ export const useListDragonsController = (): IUseListDragonsControllerProps => {
     fetchDragons,
     handleEditButton,
     handleDeleteButton,
+    isDrawerOpen,
+    toggleDrawer,
   };
 };

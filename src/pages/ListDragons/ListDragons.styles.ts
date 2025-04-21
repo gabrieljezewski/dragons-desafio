@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerScreen = styled.div`
+  position: relative;
   display: flex;
   height: 100vh;
   align-items: center;
@@ -15,6 +16,20 @@ export const Header = styled.div`
   align-items: center;
   width: 1000px;
   margin-bottom: 30px;
+`;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--primary-main);
+  cursor: pointer;
 `;
 
 export const ContainerList = styled.div`
