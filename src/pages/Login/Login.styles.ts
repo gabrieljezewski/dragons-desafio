@@ -15,6 +15,10 @@ export const ImageContainer = styled.div`
   background-image: url("/src/assets/images/dragon-login.jpg");
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const ContainerLogin = styled.div`
@@ -23,8 +27,7 @@ export const ContainerLogin = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
-  padding: 60px 100px 40px 100px;
+  padding: 0 100px;
 `;
 
 export const Box = styled.div`
@@ -33,9 +36,13 @@ export const Box = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 80px 60px 40px 60px;
-  border-radius: 20px;
+  border-radius: 12px;
   box-shadow: 0 0 10px 0px #0001;
   background-color: var(--white);
+
+  @media (max-width: 470px) {
+    padding: 60px 30px 40px 30px;
+  }
 `;
 
 export const Text = styled.div`

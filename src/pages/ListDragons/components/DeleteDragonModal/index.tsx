@@ -20,7 +20,7 @@ export const DeleteDragonModal: React.FC<DeleteDragonModalProps> = ({
   return (
     <Modal title="Deletar Dragão" isOpen={isOpen} onClose={onClose}>
       <S.ContentModal>
-        <Text fontSize="16px" fontWeight="bold">
+        <Text fontSize="16px">
           Tem certeza que deseja mesmo deletar o dragão da lista?
         </Text>
         <S.ContainerButton>
