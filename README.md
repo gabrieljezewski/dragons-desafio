@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# Sistema de dragões
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação onde usuários podem se cadastrar, fazer login e gerenciar dragões, incluindo adicionar, editar e remover informações da lista.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] Página de login.
+  - Única página disponível se não estiver logado;
+  - Criar um usuário básico para acesso;
+- [x] Uma página de lista de dragões.
+  - Os nomes devem estar em ordem alfabética;
+  - A partir da lista, deverá ser possível remover e alterar as informações dos dragões;
+- [x] Uma página para cadastro de dragões.
+- [x] Uma página com os detalhes de um dragão específico.
+  - Os seguintes dados devem ser apresentados na página: Nome, tipo e data de criação;
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node 20+
+- yarn ou npm
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Rodando a aplicação
+
+```bash
+# Clone este repositório:
+$ git clone git@github.com:gabrieljezewski/dragons-desafio.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+# Acesse a pasta do projeto no terminal/cmd
+$ cd dragons-desafio
 ```
+
+```bash
+# Instale as dependências:
+$ yarn install
+```
+
+```bash
+# Execute a aplicação em modo de desenvolvimento:
+$ yarn run dev
+```
+
+```bash
+# Usuário para acesso:
+$ admin@email.com
+$ 123456
+```
+
+Após isso, no console do terminal irá apresentar em qual url:porta o servidor estará rodando, ex: http://localhost:3000, basta copiar e acessar este endereço em seu browser.
+
+## Arquitetura
+
+- `pages`: Contém as páginas que compõem as diferentes seções da aplicação.
+- `components`: Componentes reutilizáveis em todo o projeto.
+- `contexts`: Contexts do React para gerenciamento de estado global.
+- `routes`: Definições das rotas da aplicação.
+- `services`: Módulos de integração com APIs ou lógica externa.
+- `styles`: Estilos globais e temas.
+- `utils`: Funções utilitárias e helpers.
+- `validation`: Schemas de validação para formulários.
+
+## Stacks
+
+- `React`: Framework para construção de interfaces.
+- `TypeScript`: Superset do JavaScript que adiciona tipagem estática.
+- `Styled-components`: Biblioteca para escrever estilos CSS dentro do JavaScript.
+- `Axios`: Cliente HTTP para realizar requisições a APIs externas.
+- `react-router-dom`: Gerenciador de rotas.
+- `yup`: Biblioteca para validação de formulário.
+- `react-hook-form`: Biblioteca para gerenciamento de formulários.
