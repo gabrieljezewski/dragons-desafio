@@ -10,14 +10,6 @@ export const ContainerScreen = styled.div`
   background-color: var(--background);
 `;
 
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1000px;
-  margin-bottom: 30px;
-`;
-
 export const IconWrapper = styled.div`
   position: absolute;
   top: 20px;
@@ -32,20 +24,52 @@ export const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin-bottom: 30px;
+
+  @media (max-width: 1300px) {
+    width: 90%;
+  }
+
+  @media (max-height: 700px) {
+    margin-top: 200px;
+  }
+`;
+
+export const Title = styled.div`
+  @media (max-width: 600px) {
+    & > * {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
 export const ContainerList = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: var(--white);
-  width: 1000px;
+  width: 60%;
   border-radius: 10px;
   box-shadow: 0 0 10px 0px #0001;
   background-color: var(--white);
+
+  @media (max-width: 1300px) {
+    width: 90%;
+  }
 `;
 
 export const ContainerInput = styled.div`
-  width: 1000px;
+  width: 100%;
   padding: 20px;
 `;
 
@@ -59,6 +83,22 @@ export const TableHeader = styled.div`
   padding: 16px 16px 16px 20px;
   border: 1px solid var(--gray-200);
   background-color: var(--gray-100);
+
+  @media (max-width: 890px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & > *:nth-child(3) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 665px) {
+    grid-template-columns: 1fr 1fr;
+
+    & > *:nth-child(2) {
+      display: none;
+    }
+  }
 `;
 
 export const TableBody = styled.div`
@@ -91,6 +131,22 @@ export const TableRow = styled.div`
 
   &:hover {
     background-color: var(--gray-100);
+  }
+
+  @media (max-width: 890px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & > *:nth-child(3) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 665px) {
+    grid-template-columns: 1fr 1fr;
+
+    & > *:nth-child(2) {
+      display: none;
+    }
   }
 `;
 

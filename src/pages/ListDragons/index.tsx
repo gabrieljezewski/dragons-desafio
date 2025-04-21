@@ -43,9 +43,11 @@ export default function ListDragons() {
         <MenuIcon />
       </S.IconWrapper>
       <S.Header>
-        <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
-          Lista de Dragões
-        </Text>
+        <S.Title>
+          <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
+            Lista de Dragões
+          </Text>
+        </S.Title>
         <Button
           text="Novo Dragão"
           width="190px"
