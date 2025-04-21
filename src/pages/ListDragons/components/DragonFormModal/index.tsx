@@ -7,6 +7,7 @@ import Modal from "../../../../components/Modal";
 import Input from "../../../../components/Input";
 import Textarea from "../../../../components/Textarea";
 import Button from "../../../../components/Button";
+import Loading from "../../../../components/Loading";
 
 import { useToast } from "../../../../contexts/ToastContext";
 
@@ -36,6 +37,7 @@ export const DragonFormModal: React.FC<DragonFormModalProps> = ({
 }) => {
   const { showToast } = useToast();
   const [histories, setHistories] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -91,11 +93,17 @@ export const DragonFormModal: React.FC<DragonFormModalProps> = ({
     if (!isOpen) return;
 
     if (mode === "edit" && dragonToEdit) {
+      setIsLoading(true);
+
       reset({
         name: dragonToEdit.name,
         type: dragonToEdit.type,
       });
       setHistories(dragonToEdit.histories || []);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     }
 
     if (mode === "add") {
@@ -104,6 +112,7 @@ export const DragonFormModal: React.FC<DragonFormModalProps> = ({
         type: "",
       });
       setHistories([]);
+      setIsLoading(false);
     }
   }, [isOpen, mode, dragonToEdit, reset]);
 
@@ -116,39 +125,47 @@ export const DragonFormModal: React.FC<DragonFormModalProps> = ({
       <S.ContentModal>
         <form onSubmit={handleSubmit(onSubmit)}>
           <S.Box>
-            <Input
-              label="Nome"
-              placeholder="Informe o nome do dragão"
-              {...register("name")}
-              error={!!errors.name}
-              errorMessage={errors.name?.message}
-            />
-            <Input
-              label="Tipo"
-              placeholder="Informe o tipo do dragão"
-              {...register("type")}
-              error={!!errors.type}
-              errorMessage={errors.type?.message}
-            />
-            {histories.map((history, index) => (
-              <S.HistoryWrapper key={index}>
-                <Textarea
-                  label={`História ${index + 1}`}
-                  value={history}
-                  onChange={(e) => handleHistoryChange(index, e.target.value)}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <Input
+                  label="Nome"
+                  placeholder="Informe o nome do dragão"
+                  {...register("name")}
+                  error={!!errors.name}
+                  errorMessage={errors.name?.message}
                 />
-                <S.IconWrapper>
-                  <TrashIcon onClick={() => handleRemoveHistory(index)} />
-                </S.IconWrapper>
-              </S.HistoryWrapper>
-            ))}
+                <Input
+                  label="Tipo"
+                  placeholder="Informe o tipo do dragão"
+                  {...register("type")}
+                  error={!!errors.type}
+                  errorMessage={errors.type?.message}
+                />
+                {histories.map((history, index) => (
+                  <S.HistoryWrapper key={index}>
+                    <Textarea
+                      label={`História ${index + 1}`}
+                      value={history}
+                      onChange={(e) =>
+                        handleHistoryChange(index, e.target.value)
+                      }
+                    />
+                    <S.IconWrapper>
+                      <TrashIcon onClick={() => handleRemoveHistory(index)} />
+                    </S.IconWrapper>
+                  </S.HistoryWrapper>
+                ))}
+                <Button
+                  variant="secondary"
+                  text="Adicionar história"
+                  width="160px"
+                  onClick={handleAddHistory}
+                />
+              </>
+            )}
           </S.Box>
-          <Button
-            variant="secondary"
-            text="Adicionar história"
-            width="160px"
-            onClick={handleAddHistory}
-          />
           <S.ContainerButton>
             <Button
               variant="secondary"
