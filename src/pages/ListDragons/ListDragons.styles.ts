@@ -118,6 +118,8 @@ export const EmptyMessage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
+  text-align: center;
   margin-top: 40px;
 `;
 
