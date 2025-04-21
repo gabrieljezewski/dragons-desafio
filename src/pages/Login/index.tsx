@@ -12,32 +12,36 @@ export default function Login() {
 
   return (
     <S.ContainerScreen>
+      <S.ImageContainer />
+
       <S.ContainerLogin>
         <S.Box>
-          <Text>Para acessar digite suas credenciais</Text>
+          <S.Text>
+            <Text>Para acessar digite suas credenciais</Text>
+          </S.Text>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <S.ContainerInput>
+              <Input
+                placeholder="E-mail"
+                width="300px"
+                {...register("email")}
+                error={!!errors.email}
+                errorMessage={errors.email?.message}
+              />
+              <Input
+                placeholder="Senha"
+                width="300px"
+                type="password"
+                {...register("password")}
+                error={!!errors.password}
+                errorMessage={errors.password?.message}
+              />
+            </S.ContainerInput>
+            <S.Button>
+              <Button text="Acessar" width="300px" loading={isLoading} />
+            </S.Button>
+          </form>
         </S.Box>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <S.ContainerInput>
-            <Input
-              placeholder="E-mail"
-              width="250px"
-              {...register("email")}
-              error={!!errors.email}
-              errorMessage={errors.email?.message}
-            />
-            <Input
-              placeholder="Senha"
-              width="250px"
-              type="password"
-              {...register("password")}
-              error={!!errors.password}
-              errorMessage={errors.password?.message}
-            />
-          </S.ContainerInput>
-          <S.Button>
-            <Button text="Acessar" width="200px" loading={isLoading} />
-          </S.Button>
-        </form>
       </S.ContainerLogin>
     </S.ContainerScreen>
   );
