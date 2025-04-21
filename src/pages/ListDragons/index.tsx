@@ -107,7 +107,7 @@ export default function ListDragons() {
                       fontWeight="bold"
                       color="var(--purple-900)"
                     >
-                      {truncateText(dragon?.type, 15)}
+                      {truncateText(dragon?.type || "Tipo não informado", 15)}
                     </Text>
                   </S.Tag>
                   <Text fontSize="14px" color="var(--gray-800)">

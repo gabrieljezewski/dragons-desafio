@@ -34,7 +34,7 @@ export const DragonDetailsModal = ({
             </Text>
             <S.Tag>
               <Text fontSize="14px" fontWeight="bold" color="var(--purple-900)">
-                {selectedDragon?.type}
+                {selectedDragon?.type || "Tipo não informado"}
               </Text>
             </S.Tag>
           </S.Box>
