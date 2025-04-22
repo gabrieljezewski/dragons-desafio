@@ -8,7 +8,7 @@ import { formatDate } from "../../../../utils/formatDate";
 
 import { Dragon } from "../../../../services/dragon/dragon.types";
 
-import * as S from "./styles";
+import * as S from "./dragonDetailsModal.styles";
 
 interface DragonDetailsModalProps {
   isOpen: boolean;

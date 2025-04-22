@@ -5,7 +5,7 @@ import { useAuth } from "../../../../contexts/AuthContext";
 
 import { DoorIcon } from "../../../../assets/icons/doorIcon";
 
-import * as S from "./styles";
+import * as S from "./menuDrawer.styles";
 
 interface MenuDrawerProps {
   isOpen: boolean;

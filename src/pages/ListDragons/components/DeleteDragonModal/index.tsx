@@ -4,7 +4,7 @@ import Modal from "../../../../components/Modal";
 import Text from "../../../../components/Text";
 import Button from "../../../../components/Button";
 
-import * as S from "./styles";
+import * as S from "./deleteDragonModal.styles";
 
 interface DeleteDragonModalProps {
   isOpen: boolean;
