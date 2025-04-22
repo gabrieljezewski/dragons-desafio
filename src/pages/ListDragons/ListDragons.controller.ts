@@ -5,9 +5,7 @@ import { deleteDragon, getDragonById, getDragons } from "../../services/dragon";
 
 import { useToast } from "../../contexts/ToastContext";
 
-import { IUseListDragonsControllerProps } from "./ListDragons.types";
-
-type ModalType = "details" | "add" | "edit" | "delete" | null;
+import { IUseListDragonsControllerProps, ModalType } from "./ListDragons.types";
 
 export const useListDragonsController = (): IUseListDragonsControllerProps => {
   const { showToast } = useToast();
