@@ -47,7 +47,7 @@ $ admin@email.com
 $ 123456
 ```
 
-Após isso, no console do terminal irá apresentar em qual url:porta o servidor estará rodando, ex: http://localhost:3000, basta copiar e acessar este endereço em seu browser.
+Após isso, no console do terminal irá apresentar em qual url:porta o servidor estará rodando. Basta copiar e acessar este endereço em seu browser.
 
 ## Arquitetura
 
