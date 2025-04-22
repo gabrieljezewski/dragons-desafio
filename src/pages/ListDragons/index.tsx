@@ -42,100 +42,102 @@ export default function ListDragons() {
       <S.IconWrapper onClick={toggleDrawer}>
         <MenuIcon />
       </S.IconWrapper>
-      <S.Header>
-        <S.Title>
-          <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
-            Lista de Dragões
-          </Text>
-        </S.Title>
-        <Button
-          text="Novo Dragão"
-          width="190px"
-          onClick={() => handleOpenModal("add")}
-        />
-      </S.Header>
-      <S.ContainerList>
-        <S.ContainerInput>
-          <Input
-            placeholder="Buscar dragões pelo nome ou tipo"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+      <S.Content>
+        <S.Header>
+          <S.Title>
+            <Text fontSize="32px" color="var(--purple-900)" fontWeight="bold">
+              Lista de Dragões
+            </Text>
+          </S.Title>
+          <Button
+            text="Novo Dragão"
+            width="190px"
+            onClick={() => handleOpenModal("add")}
           />
-        </S.ContainerInput>
-        <S.Table>
-          <S.TableHeader>
-            <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
-              NOME
-            </Text>
-            <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
-              TIPO
-            </Text>
-            <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
-              DATA DE CRIAÇÃO
-            </Text>
-            <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
-              AÇÕES
-            </Text>
-          </S.TableHeader>
+        </S.Header>
+        <S.ContainerList>
+          <S.ContainerInput>
+            <Input
+              placeholder="Buscar dragões pelo nome ou tipo"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </S.ContainerInput>
+          <S.Table>
+            <S.TableHeader>
+              <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
+                NOME
+              </Text>
+              <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
+                TIPO
+              </Text>
+              <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
+                DATA DE CRIAÇÃO
+              </Text>
+              <Text fontSize="14px" color="var(--gray-900)" fontWeight="bold">
+                AÇÕES
+              </Text>
+            </S.TableHeader>
 
-          {loading ? (
-            <S.TableBody>
-              <Loading />
-            </S.TableBody>
-          ) : notFound ? (
-            <S.TableBody>
-              <S.EmptyMessage>
-                <Text fontSize="16px" color="var(--gray-700)">
-                  Não encontramos nenhum resultado para esta busca.
-                </Text>
-                <Text fontSize="16px" color="var(--gray-700)">
-                  Verifique o nome digitado e tente novamente.
-                </Text>
-              </S.EmptyMessage>
-            </S.TableBody>
-          ) : (
-            <S.TableBody onClick={() => handleOpenModal("details")}>
-              {dragons.map((dragon) => (
-                <S.TableRow
-                  key={dragon.id}
-                  onClick={() => handleDragonById(dragon.id)}
-                >
-                  <Text fontSize="16px" fontWeight="bold">
-                    {truncateText(dragon.name, 20)}
+            {loading ? (
+              <S.TableBody>
+                <Loading />
+              </S.TableBody>
+            ) : notFound ? (
+              <S.TableBody>
+                <S.EmptyMessage>
+                  <Text fontSize="16px" color="var(--gray-700)">
+                    Não encontramos nenhum resultado para esta busca.
                   </Text>
-                  <S.Tag>
-                    <Text
-                      fontSize="12px"
-                      fontWeight="bold"
-                      color="var(--purple-900)"
-                    >
-                      {truncateText(dragon?.type || "Tipo não informado", 15)}
+                  <Text fontSize="16px" color="var(--gray-700)">
+                    Verifique o nome digitado e tente novamente.
+                  </Text>
+                </S.EmptyMessage>
+              </S.TableBody>
+            ) : (
+              <S.TableBody onClick={() => handleOpenModal("details")}>
+                {dragons.map((dragon) => (
+                  <S.TableRow
+                    key={dragon.id}
+                    onClick={() => handleDragonById(dragon.id)}
+                  >
+                    <Text fontSize="16px" fontWeight="bold">
+                      {truncateText(dragon.name, 20)}
                     </Text>
-                  </S.Tag>
-                  <Text fontSize="14px" color="var(--gray-800)">
-                    {formatDate(dragon?.createdAt)}
-                  </Text>
-                  <S.ContainerActions>
-                    <Button
-                      variant="secondary"
-                      text="Alterar"
-                      width="90px"
-                      height="36px"
-                      onClick={(e) => handleEditButton(e, dragon.id)}
-                    />
-                    <Button
-                      text="Deletar"
-                      width="90px"
-                      height="36px"
-                      onClick={(e) => handleDeleteButton(e, dragon.id)}
-                    />
-                  </S.ContainerActions>
-                </S.TableRow>
-              ))}
-            </S.TableBody>
-          )}
-        </S.Table>
-      </S.ContainerList>
+                    <S.Tag>
+                      <Text
+                        fontSize="12px"
+                        fontWeight="bold"
+                        color="var(--purple-900)"
+                      >
+                        {truncateText(dragon?.type || "Tipo não informado", 15)}
+                      </Text>
+                    </S.Tag>
+                    <Text fontSize="14px" color="var(--gray-800)">
+                      {formatDate(dragon?.createdAt)}
+                    </Text>
+                    <S.ContainerActions>
+                      <Button
+                        variant="secondary"
+                        text="Alterar"
+                        width="90px"
+                        height="36px"
+                        onClick={(e) => handleEditButton(e, dragon.id)}
+                      />
+                      <Button
+                        text="Deletar"
+                        width="90px"
+                        height="36px"
+                        onClick={(e) => handleDeleteButton(e, dragon.id)}
+                      />
+                    </S.ContainerActions>
+                  </S.TableRow>
+                ))}
+              </S.TableBody>
+            )}
+          </S.Table>
+        </S.ContainerList>
+      </S.Content>
 
       <MenuDrawer isOpen={isDrawerOpen} onClose={toggleDrawer} />
 

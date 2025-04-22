@@ -1,27 +1,28 @@
 import styled from "styled-components";
 
 export const ContainerScreen = styled.div`
-  position: relative;
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  min-height: 100dvh;
+  padding: 20px;
   background-color: var(--background);
 `;
 
 export const IconWrapper = styled.div`
-  position: absolute;
-  top: 20px;
-  left: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40px;
   height: 40px;
+  margin-bottom: 40px;
   border-radius: 10px;
   background-color: var(--primary-main);
   cursor: pointer;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export const Header = styled.div`
@@ -31,12 +32,12 @@ export const Header = styled.div`
   width: 60%;
   margin-bottom: 30px;
 
-  @media (max-width: 1300px) {
-    width: 90%;
+  @media (max-width: 1390px) {
+    width: 80%;
   }
 
-  @media (max-height: 700px) {
-    margin-top: 200px;
+  @media (max-width: 1049px) {
+    width: 100%;
   }
 `;
 
@@ -63,8 +64,12 @@ export const ContainerList = styled.div`
   box-shadow: 0 0 10px 0px #0001;
   background-color: var(--white);
 
-  @media (max-width: 1300px) {
-    width: 90%;
+  @media (max-width: 1390px) {
+    width: 80%;
+  }
+
+  @media (max-width: 1049px) {
+    width: 100%;
   }
 `;
 
@@ -84,7 +89,7 @@ export const TableHeader = styled.div`
   border: 1px solid var(--gray-200);
   background-color: var(--gray-100);
 
-  @media (max-width: 890px) {
+  @media (max-width: 840px) {
     grid-template-columns: 1fr 1fr 1fr;
 
     & > *:nth-child(3) {
@@ -92,7 +97,7 @@ export const TableHeader = styled.div`
     }
   }
 
-  @media (max-width: 665px) {
+  @media (max-width: 650px) {
     grid-template-columns: 1fr 1fr;
 
     & > *:nth-child(2) {
@@ -135,7 +140,7 @@ export const TableRow = styled.div`
     background-color: var(--gray-100);
   }
 
-  @media (max-width: 890px) {
+  @media (max-width: 840px) {
     grid-template-columns: 1fr 1fr 1fr;
 
     & > *:nth-child(3) {
@@ -143,7 +148,7 @@ export const TableRow = styled.div`
     }
   }
 
-  @media (max-width: 665px) {
+  @media (max-width: 650px) {
     grid-template-columns: 1fr 1fr;
 
     & > *:nth-child(2) {
