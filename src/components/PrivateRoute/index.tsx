@@ -1,8 +1,10 @@
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { useAuth } from "../../contexts/AuthContext";
+
+import { useToast } from "../../contexts/ToastContext";
 
 interface Props {
   children: JSX.Element;
@@ -10,8 +12,16 @@ interface Props {
 
 const PrivateRoute = ({ children }: Props) => {
   const { isAuthenticated } = useAuth();
+  const { showToast } = useToast();
+  const location = useLocation();
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  useEffect(() => {
+    if (!isAuthenticated) {
+      showToast("Usuário não logado!", "error");
+    }
+  }, [isAuthenticated, location.pathname]);
+
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;
